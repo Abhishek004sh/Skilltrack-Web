@@ -101,3 +101,22 @@ function deleteSkill(index) {
     }
 }
 
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    document.getElementById("themeToggle").textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+}
+
+// Load theme on page load
+window.onload = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("themeToggle").textContent = "☀️ Light Mode";
+    } else {
+        document.getElementById("themeToggle").textContent = "🌙 Dark Mode";
+    }
+};
