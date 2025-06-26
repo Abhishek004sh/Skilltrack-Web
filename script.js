@@ -62,6 +62,8 @@ function updateList() {
 
         list.appendChild(li);
     });
+    updateChart();
+
 }
 
 
@@ -75,11 +77,13 @@ function loadSkills() {
     const data = localStorage.getItem("skills");
     if (data) {
         skills = JSON.parse(data);
-        updateList();
+        updateList();      // Renders the updated skill list
+        updateChart();     // Renders the updated chart
     } else {
         alert("No saved skills found.");
     }
 }
+
 
 function editSkill(index) {
     const newProgress = prompt(`Enter new progress for ${skills[index].name}:`, skills[index].progress);
