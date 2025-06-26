@@ -45,9 +45,12 @@ body {
     max-width: 600px;
     margin: auto;
     padding: 2rem;
-    background: #be6d6d;
-    color: #333;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: var(--text-color);
+    transition: background 0.5s ease;
 }
+
 
 input {
     margin: 0.5rem;
