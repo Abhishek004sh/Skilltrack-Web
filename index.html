@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillTrack Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>📚 SkillTrack – Skill Progress Tracker</h1>
+
+    <div class="form">
+        <input type="text" id="skillName" placeholder="Skill name (e.g., Java)">
+        <input type="number" id="skillProgress" placeholder="Progress (%)" min="0" max="100">
+        <button onclick="addSkill()">Add Skill</button>
+    </div>
+
+    <h2>📝 Your Skills</h2>
+    <ul id="skillList"></ul>
+
+    <button onclick="saveSkills()">💾 Save</button>
+    <button onclick="loadSkills()">📂 Load</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
