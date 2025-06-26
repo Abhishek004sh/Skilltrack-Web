@@ -165,3 +165,45 @@ function updateChart() {
     });
 }
 
+function exportSkills() {
+    if (skills.length === 0) {
+        alert("No skills to export!");
+        return;
+    }
+
+    const dataStr = JSON.stringify(skills, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "skilltrack_data.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+function importSkills() {
+    const fileInput = document.getElementById("importFile");
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            const importedData = JSON.parse(e.target.result);
+            if (!Array.isArray(importedData)) throw new Error("Invalid file format");
+            
+            skills = importedData;
+            updateList();
+            updateChart();
+            saveSkills();  // Optional: save imported data to localStorage
+            alert("✅ Skills imported successfully!");
+        } catch (err) {
+            alert("❌ Failed to import skills: " + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+
