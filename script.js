@@ -1,3 +1,6 @@
+let skillChart = null;
+
+
 let skills = [];
 
 function addSkill() {
@@ -120,3 +123,41 @@ window.onload = () => {
         document.getElementById("themeToggle").textContent = "🌙 Dark Mode";
     }
 };
+
+
+function updateChart() {
+    const ctx = document.getElementById("skillChart").getContext("2d");
+
+    const labels = skills.map(skill => skill.name);
+    const data = skills.map(skill => skill.progress);
+
+    if (skillChart) {
+        skillChart.data.labels = labels;
+        skillChart.data.datasets[0].data = data;
+        skillChart.update();
+        return;
+    }
+
+    skillChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Skill Progress (%)',
+                data: data,
+                backgroundColor: 'rgba(33, 150, 243, 0.7)',
+                borderColor: 'rgba(33, 150, 243, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+
