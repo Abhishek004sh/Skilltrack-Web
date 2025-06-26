@@ -2,37 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillTrack Web</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>📚 SkillTrack – Skill Progress Tracker</h1>
-    
-    <button id="themeToggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
-    
-
-    <div class="form">
-        <input type="text" id="skillName" placeholder="Skill name (e.g., Java)">
-        <input type="number" id="skillProgress" placeholder="Progress (%)" min="0" max="100">
-        <button onclick="addSkill()">Add Skill</button>
+    <div class="header">
+        <h1>📘 SkillTrack Web</h1>
+        <input type="text" id="skillName" placeholder="Skill name">
+        <input type="number" id="skillProgress" placeholder="Progress %">
+        <button onclick="addSkill()">➕ Add Skill</button>
+        <button onclick="saveSkills()">💾 Save</button>
+        <button onclick="loadSkills()">📂 Load</button>
+        <button id="themeToggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
     </div>
 
-    <h2>📝 Your Skills</h2>
     <ul id="skillList"></ul>
 
     <h2>📊 Skill Progress Chart</h2>
-<canvas id="skillChart" width="400" height="200"></canvas>
+    <canvas id="skillChart" width="400" height="200"></canvas>
 
-
-    <button onclick="saveSkills()">💾 Save</button>
-    <button onclick="loadSkills()">📂 Load</button>
     <h2>📤 Export / 📥 Import</h2>
-<button onclick="exportSkills()">📤 Export Skills</button>
-<input type="file" id="importFile" accept=".json" onchange="importSkills()" />
-
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <button onclick="exportSkills()">📤 Export Skills</button>
+    <input type="file" id="importFile" accept=".json" onchange="importSkills()">
 
     <script src="script.js"></script>
 </body>
