@@ -41,18 +41,20 @@ function addSkill() {
 function updateList() {
     const list = document.getElementById("skillList");
     list.innerHTML = '';
+
     skills.forEach((skill, index) => {
         const li = document.createElement("li");
-        li.textContent = `${skill.name} – ${skill.progress}%`;
-        li.onclick = () => {
-            if (confirm("Delete this skill?")) {
-                skills.splice(index, 1);
-                updateList();
-            }
-        };
+
+        li.innerHTML = `
+            <strong>${skill.name}</strong> – ${skill.progress}%
+            <button onclick="editSkill(${index})">✏️ Edit</button>
+            <button onclick="deleteSkill(${index})">🗑️ Delete</button>
+        `;
+
         list.appendChild(li);
     });
 }
+
 
 function saveSkills() {
     localStorage.setItem("skills", JSON.stringify(skills));
@@ -68,3 +70,27 @@ function loadSkills() {
         alert("No saved skills found.");
     }
 }
+
+function editSkill(index) {
+    const newProgress = prompt(`Enter new progress for ${skills[index].name}:`, skills[index].progress);
+
+    if (newProgress === null) return; // cancelled
+
+    const value = parseInt(newProgress);
+
+    if (isNaN(value) || value < 0 || value > 100) {
+        alert("Progress must be a number between 0 and 100.");
+        return;
+    }
+
+    skills[index].progress = value;
+    updateList();
+}
+
+function deleteSkill(index) {
+    if (confirm(`Delete "${skills[index].name}"?`)) {
+        skills.splice(index, 1);
+        updateList();
+    }
+}
+
