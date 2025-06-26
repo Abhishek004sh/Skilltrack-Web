@@ -1,3 +1,45 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --bar-bg: #ddd;
+    --bar-fill: #4caf50;
+    --button-bg: #007BFF;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --bar-bg: #333;
+    --bar-fill: #00e676;
+    --button-bg: #2196f3;
+}
+
+
+.bar {
+    background: var(--bar-bg);
+}
+.fill {
+    background: var(--bar-fill);
+}
+button {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+
 body {
     font-family: 'Segoe UI', sans-serif;
     max-width: 600px;
