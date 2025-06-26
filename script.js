@@ -37,7 +37,6 @@ function addSkill() {
     progressInput.value = '';
 }
 
-
 function updateList() {
     const list = document.getElementById("skillList");
     list.innerHTML = '';
@@ -46,14 +45,22 @@ function updateList() {
         const li = document.createElement("li");
 
         li.innerHTML = `
-            <strong>${skill.name}</strong> – ${skill.progress}%
-            <button onclick="editSkill(${index})">✏️ Edit</button>
-            <button onclick="deleteSkill(${index})">🗑️ Delete</button>
+            <div class="skill-header">
+                <strong>${skill.name}</strong> – ${skill.progress}%
+            </div>
+            <div class="bar">
+                <div class="fill" style="width: ${skill.progress}%"></div>
+            </div>
+            <div class="buttons">
+                <button onclick="editSkill(${index})">✏️ Edit</button>
+                <button onclick="deleteSkill(${index})">🗑️ Delete</button>
+            </div>
         `;
 
         list.appendChild(li);
     });
 }
+
 
 
 function saveSkills() {
