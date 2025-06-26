@@ -9,6 +9,7 @@
     <h1>📚 SkillTrack – Skill Progress Tracker</h1>
     
     <button id="themeToggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
+    
 
     <div class="form">
         <input type="text" id="skillName" placeholder="Skill name (e.g., Java)">
@@ -25,6 +26,10 @@
 
     <button onclick="saveSkills()">💾 Save</button>
     <button onclick="loadSkills()">📂 Load</button>
+    <h2>📤 Export / 📥 Import</h2>
+<button onclick="exportSkills()">📤 Export Skills</button>
+<input type="file" id="importFile" accept=".json" onchange="importSkills()" />
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
